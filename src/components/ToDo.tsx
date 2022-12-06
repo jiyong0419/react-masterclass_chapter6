@@ -4,7 +4,14 @@ import { IToDo, toDoState } from "./atoms";
 function ToDo({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
   const onClick = (newCategory: IToDo["category"]) => {
-    console.log("i wanna go to ", newCategory);
+    setToDos((preToDos) => {
+      const targetIndex = preToDos.findIndex((toDo) => toDo.id === id);
+      const preToDo = preToDos[targetIndex];
+      const newToDo = { text, id, category: newCategory };
+      console.log(newToDo);
+
+      return preToDos;
+    });
   };
   return (
     <li>
