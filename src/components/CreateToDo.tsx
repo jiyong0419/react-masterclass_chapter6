@@ -9,9 +9,9 @@ function CreateToDo() {
   const setToDos = useSetRecoilState(toDoState);
   const { register, handleSubmit, setValue } = useForm<ISubmitData>();
   const onSubmit = ({ toDo }: ISubmitData) => {
-    setToDos((toDos) => [
+    setToDos((preToDos) => [
       { text: toDo, id: Date.now(), category: "TO_DO" },
-      ...toDos,
+      ...preToDos,
     ]);
     setValue("toDo", "");
   };
