@@ -8,9 +8,14 @@ function ToDo({ text, category, id }: IToDo) {
       const targetIndex = preToDos.findIndex((toDo) => toDo.id === id);
       const preToDo = preToDos[targetIndex];
       const newToDo = { text, id, category: newCategory };
-      console.log(newToDo);
 
-      return preToDos;
+      const array = [0, 1, 2, 3, 4, 5];
+
+      return [
+        ...preToDos.slice(0, targetIndex),
+        newToDo,
+        ...preToDos.slice(targetIndex + 1),
+      ];
     });
   };
   return (
